@@ -8,7 +8,7 @@ class BurgersService {
   }
 
   async getById(id) {
-    const burger = FakeDb.burgers.find(burger => burger.id === id)
+    const burger = await FakeDb.burgers.find(burger => burger.id === id)
     if (!burger) {
       throw new BadRequest('Invalid Id')
     }
@@ -35,3 +35,5 @@ class BurgersService {
     FakeDb.burgers = FakeDb.burgers.filter(b => b.id !== id)
   }
 }
+
+export const burgersService = new BurgersService()
